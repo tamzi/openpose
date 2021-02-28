@@ -32,7 +32,7 @@ namespace op
         // ...
         // Matrix opMat = CV2OPCONSTMAT(Matrix());
     #define OP_CV2OPCONSTMAT(cvMat) \
-        (op::Matrix((const void* const)&(cvMat)))
+        (op::Matrix((const void*)&(cvMat)))
 
     // Convert from std::vector<Matrix> into std::vector<cv::Mat>. Usage example:
         // #include <opencv2/core/core.hpp>
@@ -111,6 +111,11 @@ namespace op
          * avoid explicitly exposing 3rdparty libraries on the headers.
          */
         explicit Matrix(const void* cvMatPtr);
+
+        /**
+         * Analog to cv::Mat(int rows, int cols, int type, void *data, size_t step=AUTO_STEP)
+         */
+        explicit Matrix(const int rows, const int cols, const int type);
 
         /**
          * Analog to cv::Mat(int rows, int cols, int type, void *data, size_t step=AUTO_STEP)

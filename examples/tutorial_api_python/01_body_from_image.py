@@ -60,11 +60,11 @@ try:
     datum = op.Datum()
     imageToProcess = cv2.imread(args[0].image_path)
     datum.cvInputData = imageToProcess
-    opWrapper.emplaceAndPop([datum])
+    opWrapper.emplaceAndPop(op.VectorDatum([datum]))
 
     # Display Image
     print("Body keypoints: \n" + str(datum.poseKeypoints))
-    cv2.imshow("OpenPose 1.6.0 - Tutorial Python API", datum.cvOutputData)
+    cv2.imshow("OpenPose 1.7.0 - Tutorial Python API", datum.cvOutputData)
     cv2.waitKey(0)
 except Exception as e:
     print(e)

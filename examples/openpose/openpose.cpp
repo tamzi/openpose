@@ -4,8 +4,9 @@
     // 2. Extract and render body/hand/face/foot keypoint/heatmap/PAF of that image.
     // 3. Save the results on disk.
     // 4. Display the rendered pose.
-// If the user wants to learn to use the OpenPose C++ library, we highly recommend to start with the examples in
-// `examples/tutorial_api_cpp/`.
+// For more details on the OpenPose examples, see
+// - https://cmu-perceptual-computing-lab.github.io/openpose/web/html/doc/
+// - https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/00_index.md
 
 // Command-line user interface
 #include <openpose/flags.hpp>
@@ -67,13 +68,13 @@ void configureWrapper(op::Wrapper& opWrapper)
 
         // Pose configuration (use WrapperStructPose{} for default and recommended configuration)
         const op::WrapperStructPose wrapperStructPose{
-            poseMode, netInputSize, outputSize, keypointScaleMode, FLAGS_num_gpu, FLAGS_num_gpu_start,
-            FLAGS_scale_number, (float)FLAGS_scale_gap, op::flagsToRenderMode(FLAGS_render_pose, multipleView),
-            poseModel, !FLAGS_disable_blending, (float)FLAGS_alpha_pose, (float)FLAGS_alpha_heatmap,
-            FLAGS_part_to_show, op::String(FLAGS_model_folder), heatMapTypes, heatMapScaleMode, FLAGS_part_candidates,
-            (float)FLAGS_render_threshold, FLAGS_number_people_max, FLAGS_maximize_positives, FLAGS_fps_max,
-            op::String(FLAGS_prototxt_path), op::String(FLAGS_caffemodel_path),
-            (float)FLAGS_upsampling_ratio, enableGoogleLogging};
+            poseMode, netInputSize, FLAGS_net_resolution_dynamic, outputSize, keypointScaleMode, FLAGS_num_gpu,
+            FLAGS_num_gpu_start, FLAGS_scale_number, (float)FLAGS_scale_gap,
+            op::flagsToRenderMode(FLAGS_render_pose, multipleView), poseModel, !FLAGS_disable_blending,
+            (float)FLAGS_alpha_pose, (float)FLAGS_alpha_heatmap, FLAGS_part_to_show, op::String(FLAGS_model_folder),
+            heatMapTypes, heatMapScaleMode, FLAGS_part_candidates, (float)FLAGS_render_threshold,
+            FLAGS_number_people_max, FLAGS_maximize_positives, FLAGS_fps_max, op::String(FLAGS_prototxt_path),
+            op::String(FLAGS_caffemodel_path), (float)FLAGS_upsampling_ratio, enableGoogleLogging};
         opWrapper.configure(wrapperStructPose);
         // Face configuration (use op::WrapperStructFace{} to disable it)
         const op::WrapperStructFace wrapperStructFace{

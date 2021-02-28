@@ -37,7 +37,7 @@ public:
         if (mClosed || mImageFiles.size() <= mCounter)
         {
             op::opLog("Last frame read and added to queue. Closing program after it is processed.", op::Priority::High);
-            // This funtion stops this worker, which will eventually stop the whole thread system once all the frames
+            // This function stops this worker, which will eventually stop the whole thread system once all the frames
             // have been processed
             mClosed = true;
             return nullptr;
@@ -125,13 +125,13 @@ void configureWrapper(op::Wrapper& opWrapper)
 
         // Pose configuration (use WrapperStructPose{} for default and recommended configuration)
         const op::WrapperStructPose wrapperStructPose{
-            poseMode, netInputSize, outputSize, keypointScaleMode, FLAGS_num_gpu, FLAGS_num_gpu_start,
-            FLAGS_scale_number, (float)FLAGS_scale_gap, op::flagsToRenderMode(FLAGS_render_pose, multipleView),
-            poseModel, !FLAGS_disable_blending, (float)FLAGS_alpha_pose, (float)FLAGS_alpha_heatmap,
-            FLAGS_part_to_show, op::String(FLAGS_model_folder), heatMapTypes, heatMapScaleMode, FLAGS_part_candidates,
-            (float)FLAGS_render_threshold, FLAGS_number_people_max, FLAGS_maximize_positives, FLAGS_fps_max,
-            op::String(FLAGS_prototxt_path), op::String(FLAGS_caffemodel_path),
-            (float)FLAGS_upsampling_ratio, enableGoogleLogging};
+            poseMode, netInputSize, FLAGS_net_resolution_dynamic, outputSize, keypointScaleMode, FLAGS_num_gpu,
+            FLAGS_num_gpu_start, FLAGS_scale_number, (float)FLAGS_scale_gap,
+            op::flagsToRenderMode(FLAGS_render_pose, multipleView), poseModel, !FLAGS_disable_blending,
+            (float)FLAGS_alpha_pose, (float)FLAGS_alpha_heatmap, FLAGS_part_to_show, op::String(FLAGS_model_folder),
+            heatMapTypes, heatMapScaleMode, FLAGS_part_candidates, (float)FLAGS_render_threshold,
+            FLAGS_number_people_max, FLAGS_maximize_positives, FLAGS_fps_max, op::String(FLAGS_prototxt_path),
+            op::String(FLAGS_caffemodel_path), (float)FLAGS_upsampling_ratio, enableGoogleLogging};
         opWrapper.configure(wrapperStructPose);
         // Face configuration (use op::WrapperStructFace{} to disable it)
         const op::WrapperStructFace wrapperStructFace{

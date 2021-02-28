@@ -86,10 +86,10 @@ try:
     datum.handRectangles = handRectangles
 
     # Process and display image
-    opWrapper.emplaceAndPop([datum])
+    opWrapper.emplaceAndPop(op.VectorDatum([datum]))
     print("Left hand keypoints: \n" + str(datum.handKeypoints[0]))
     print("Right hand keypoints: \n" + str(datum.handKeypoints[1]))
-    cv2.imshow("OpenPose 1.6.0 - Tutorial Python API", datum.cvOutputData)
+    cv2.imshow("OpenPose 1.7.0 - Tutorial Python API", datum.cvOutputData)
     cv2.waitKey(0)
 except Exception as e:
     print(e)

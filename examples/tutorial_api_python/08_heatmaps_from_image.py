@@ -64,7 +64,7 @@ try:
     datum = op.Datum()
     imageToProcess = cv2.imread(args[0].image_path)
     datum.cvInputData = imageToProcess
-    opWrapper.emplaceAndPop([datum])
+    opWrapper.emplaceAndPop(op.VectorDatum([datum]))
 
     # Process outputs
     outputImageF = (datum.inputNetData[0].copy())[0,:,:,:] + 0.5
@@ -80,7 +80,7 @@ try:
         heatmap = heatmaps[counter, :, :].copy()
         heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
         combined = cv2.addWeighted(outputImageF, 0.5, heatmap, 0.5, 0)
-        cv2.imshow("OpenPose 1.6.0 - Tutorial Python API", combined)
+        cv2.imshow("OpenPose 1.7.0 - Tutorial Python API", combined)
         key = cv2.waitKey(-1)
         if key == 27:
             break

@@ -67,12 +67,12 @@ try:
         datum = op.Datum()
         imageToProcess = cv2.imread(imagePath)
         datum.cvInputData = imageToProcess
-        opWrapper.emplaceAndPop([datum])
+        opWrapper.emplaceAndPop(op.VectorDatum([datum]))
 
         print("Body keypoints: \n" + str(datum.poseKeypoints))
 
         if not args[0].no_display:
-            cv2.imshow("OpenPose 1.6.0 - Tutorial Python API", datum.cvOutputData)
+            cv2.imshow("OpenPose 1.7.0 - Tutorial Python API", datum.cvOutputData)
             key = cv2.waitKey(15)
             if key == 27: break
 
